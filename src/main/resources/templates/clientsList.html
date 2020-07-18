@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Clients</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<h1>Clients of bank</h1>
+<div th:switch="${clients}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <table>
+            <thead>
+            <tr style="background-color:#35e384;">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.id}"></td>
+                <td th:text="${client.name}"></td>
+                <td th:text="${client.address}"></td>
+                <td th:text="${client.age}"></td>
+                <!--<td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--<p><a href="/user-create">Create user</a></p>-->
+</div>
+<br>
+<div>
+    <form method="post">
+        <input type="text" name="name" placeholder="Name of new client" />
+        <input type="text" name="address" placeholder="Address of new client" />
+        <input type="number" name="age" placeholder="Age of new client" min="10" max="100" style="width: 150px;"/>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+</body>
+</html>
