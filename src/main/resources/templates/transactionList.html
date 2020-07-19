@@ -20,9 +20,9 @@
     </style>
 </head>
 <body>
-<h1>Clients if bank</h1>
+<h1>All transactions in bank</h1>
 <div th:switch="${transactions}">
-    <h2 th:case="null">No accounts found!</h2>
+    <h2 th:case="null">No transactions found!</h2>
     <div th:case="*">
         <table>
             <thead>
@@ -49,9 +49,11 @@
         <input type="number" name="accountIDfrom" placeholder="Id of account from" min="1" max="100" style="width: 150px;"/>
         <input type="number" name="accountIDto" placeholder="Id of account to" min="1" max="10000" style="width: 150px;"/>
         <input type="number" name="money" placeholder="Amount of money to transact" min="1" max="10000" style="width: 150px;"/>
-        <input type="number" name="accountIDto" placeholder="Id of account to" min="1" max="10000" style="width: 150px;"/>
+        <input type="hidden" name="_csrf" value="_csrf.token"/>
         <button type="submit">New transaction</button>
     </form>
 </div>
+<br>
+<a href="/">Go to Main Menu</a>
 </body>
 </html>

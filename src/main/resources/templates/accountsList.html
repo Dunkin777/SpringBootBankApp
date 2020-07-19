@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-<h1>Clients if bank</h1>
+<h1>Accounts of bank</h1>
 <div th:switch="${accounts}">
     <h2 th:case="null">No accounts found!</h2>
     <div th:case="*">
@@ -47,9 +47,11 @@
     <form method="post">
         <input type="number" name="clientId" placeholder="Id of new client" min="1" max="100" style="width: 150px;"/>
         <input type="number" name="money" placeholder="Money of new client" min="1" max="10000" style="width: 150px;"/>
+        <input type="hidden" name="_csrf" value="_csrf.token"/>
         <button type="submit">Добавить</button>
     </form>
 </div>
-
+<br>
+<a href="/">Go to Main Menu</a>
 </body>
 </html>
