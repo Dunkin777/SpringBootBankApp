@@ -34,4 +34,6 @@ return clientRepository.findAll();
         clientRepository.deleteById(id);
     }
 
+    //public Integer findByName(String )
+
 }

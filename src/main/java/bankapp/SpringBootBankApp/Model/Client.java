@@ -4,6 +4,9 @@ package bankapp.SpringBootBankApp.Model;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Data
@@ -19,8 +22,8 @@ public class Client {
     private String address;
     @Column(name = "age")
     private Integer age;
-    /*@OneToMany(mappedBy = "clientsByClientId")
-    private Collection<Account> accountsById;*/
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientByClientId")
+    private List<Account> accountsById;
 
     public Client() {
     }
@@ -31,13 +34,11 @@ public class Client {
         this.age = age;
     }
 
-    /*@OneToMany(mappedBy = "clientsByClientId")
-    public Collection<Account> getAccountsById() {
+    public List<Account> getAccountsById() {
         return accountsById;
     }
 
-    public void setAccountsById(Collection<Account> accountsById) {
+    public void setAccountsById(List<Account> accountsById) {
         this.accountsById = accountsById;
-    }*/
-
+    }
 }

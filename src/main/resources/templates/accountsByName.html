@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>AccountList</title>
+    <title th:text="'Accounts of ' + ${name}"/>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -20,22 +20,20 @@
     </style>
 </head>
 <body>
-<h1>Accounts of bank</h1>
-<div th:switch="${accounts}">
+<h1 th:text="'Accounts of ' + ${name}" />
+<div th:switch="${accountsList}">
     <h2 th:case="null">No accounts found!</h2>
     <div th:case="*">
         <table>
             <thead>
             <tr style="background-color:#35e384;">
-                <th>Id</th>
-                <th>ClientID</th>
+                <th>AccountID</th>
                 <th>AmountOfMoney</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="account : ${accounts}">
+            <tr th:each="account : ${accountsList}">
                 <td th:text="${account.id}"></td>
-                <td th:text="${account.clientId}"></td>
                 <td th:text="${account.money}"></td>
             </tr>
             </tbody>

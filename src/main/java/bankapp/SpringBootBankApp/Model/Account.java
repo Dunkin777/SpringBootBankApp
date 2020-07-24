@@ -16,6 +16,9 @@ public class Account {
     private Integer clientId;
     @Column(name = "money")
     private Integer money;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Client clientByClientId;
 
     public Account() {
     }
@@ -24,5 +27,4 @@ public class Account {
         this.clientId = clientId;
         this.money = money;
     }
-
 }
