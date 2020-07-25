@@ -63,4 +63,11 @@ public class User {
 
     public User() {
     }
+
+    public User(String username, String password, boolean active, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+    }
 }

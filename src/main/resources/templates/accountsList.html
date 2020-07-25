@@ -44,14 +44,23 @@
 </div>
 <br>
 <div>
-    <form method="post">
+    <form th:action="@{/accounts}" method="post">
         <input type="number" name="clientId" placeholder="Id of new account" min="1" max="100" style="width: 150px;"/>
         <input type="number" name="money" placeholder="Money of new client" min="1" max="10000" style="width: 150px;"/>
-        <input type="hidden" name="_csrf" value="_csrf.token"/>
+        <!--<input type="hidden" name="_csrf" value="_csrf.token"/>-->
         <button type="submit">Добавить</button>
     </form>
 </div>
 <br>
+<div>
+    <form th:action="@{/accounts}" method="post"> <!--перегружает пост?-->
+        <input type="number" name="accountIDfrom" placeholder="Id of account from" min="1" max="100" style="width: 150px;"/>
+        <input type="number" name="accountIDto" placeholder="Id of account to" min="1" max="10000" style="width: 150px;"/>
+        <input type="number" name="money" placeholder="Amount of money to transact" min="1" max="10000" style="width: 150px;"/>
+        <!--<input type="hidden" name="_csrf" value="_csrf.token"/>-->
+        <button type="submit">Make transaction</button>
+    </form>
+</div>
 <a href="/">Go to Main Menu</a>
 </body>
 </html>

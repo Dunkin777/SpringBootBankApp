@@ -4,6 +4,7 @@ package bankapp.SpringBootBankApp.Model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,6 +20,16 @@ public class Account {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Client clientByClientId;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountByAccountFrom")
+    private List<Transactions> transactionsById;
+
+    public Integer getMoney() {
+        return money;
+    }
+
+    public void setMoney(Integer money) {
+        this.money = money;
+    }
 
     public Account() {
     }

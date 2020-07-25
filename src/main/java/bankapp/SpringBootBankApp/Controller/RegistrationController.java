@@ -30,11 +30,11 @@ public class RegistrationController {
             model.addAttribute("text", "Username is:" + username);
         return "registration";
         }
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER)); //синглтон создаёт сет с одним значением
+        User user = new User(username,password,true,Collections.singleton(Role.USER));
+        //user.setUsername(username);
+        //user.setPassword(password);
+        //user.setActive(true);
+        //user.setRoles(Collections.singleton(Role.USER)); //синглтон создаёт сет с одним значением
         userRepository.save(user);
         return "redirect:/login";
     }

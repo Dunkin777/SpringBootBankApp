@@ -49,14 +49,15 @@
 </div>
 <br>
 <div>
-    <form method="post">
+    <form th:action="@{/clients}" method="post">
         <input type="text" name="name" placeholder="Name of new client" />
         <input type="text" name="address" placeholder="Address of new client" />
         <input type="number" name="age" placeholder="Age of new client" min="10" max="100" style="width: 150px;"/>
-        <input type="hidden" name="_csrf" value="_csrf.token"/>
+        <!--<input type="hidden" name="_csrf" value="_csrf.token"/>-->
         <button type="submit">Добавить</button>
     </form>
 </div>
+<p th:text="${message}" />
 <br>
 <a href="/">Go to Main Menu</a>
 </body>

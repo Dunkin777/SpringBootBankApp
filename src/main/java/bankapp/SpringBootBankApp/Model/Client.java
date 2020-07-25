@@ -34,6 +34,10 @@ public class Client {
         this.age = age;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public List<Account> getAccountsById() {
         return accountsById;
     }

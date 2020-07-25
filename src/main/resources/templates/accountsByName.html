@@ -42,11 +42,10 @@
 </div>
 <br>
 <div>
-    <form method="post">
-        <input type="number" name="clientId" placeholder="Id of new account" min="1" max="100" style="width: 150px;"/>
+    <form th:action="@{/accounts/{name}(name=${name})}" method="post"> <!--без уточнения не работает-->
         <input type="number" name="money" placeholder="Money of new client" min="1" max="10000" style="width: 150px;"/>
-        <input type="hidden" name="_csrf" value="_csrf.token"/>
-        <button type="submit">Добавить</button>
+        <!--<input type="hidden" name="_csrf" value="_csrf.token"/>-->
+        <button type="submit">Добавить новый счёт</button>
     </form>
 </div>
 <br>

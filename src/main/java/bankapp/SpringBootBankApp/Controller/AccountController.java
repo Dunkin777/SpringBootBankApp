@@ -41,6 +41,19 @@ public class AccountController {
         return "accountsList";
     }
 
+    @PostMapping("/accounts") //перегрузка метода не работает
+    public String addTransaction(@RequestParam Integer accountIDfrom, @RequestParam Integer accountIDto,@RequestParam Integer money, Model model){
+        Account accountFrom = accountService.findById(accountIDfrom);
+        Integer buff = accountFrom.getMoney();
+        accountFrom.setMoney(buff - money);
+        Account accountFrom2 = accountService.findById(accountIDto);
+        buff = accountFrom2.getMoney();
+        accountFrom.setMoney(buff + money);
+        List<Account> accounts = accountService.findAll();
+        model.addAttribute("accounts", accounts);
+        return "accountsList";
+    }
+
 
 
 }
