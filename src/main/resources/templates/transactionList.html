@@ -32,6 +32,7 @@
     <br>
     <button type="submit">Filter</button>
 </form>-->
+<!--вывод таблицы-->
 <div th:switch="${transactions}">
     <h2 th:case="null">No transaction found!</h2>
     <div th:case="*">

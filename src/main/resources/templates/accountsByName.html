@@ -20,6 +20,7 @@
     </style>
 </head>
 <body>
+<!--вывод таблицы-->
 <h1 th:text="'Accounts of ' + ${name}" />
 <div th:switch="${accountsList}">
     <h2 th:case="null">No accounts found!</h2>

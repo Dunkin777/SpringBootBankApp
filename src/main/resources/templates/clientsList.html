@@ -21,6 +21,7 @@
 </head>
 <body>
 <h1>Clients of bank</h1>
+<!--вывод таблицы-->
 <div th:switch="${clients}">
     <h2 th:case="null">No users found!</h2>
     <div th:case="*">

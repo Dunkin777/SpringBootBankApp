@@ -21,6 +21,7 @@
 </head>
 <body>
 <h1>Accounts of bank</h1>
+<!--вывод таблицы-->
 <div th:switch="${accounts}">
     <h2 th:case="null">No accounts found!</h2>
     <div th:case="*">

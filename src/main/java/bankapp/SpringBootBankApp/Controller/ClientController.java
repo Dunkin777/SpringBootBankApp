@@ -41,21 +41,21 @@ private final TransactionRepository transactionRepository;
         model.addAttribute("name", siteOwnerName);
         return "index";
     }
-
+    /*список клиентов*/
     @GetMapping("/clients")
     public String findAllclients(Model model){
         List<Client> clients = clientRepository.findAll();
         model.addAttribute("clients", clients);
         return "clientsList";
     }
-
-    @GetMapping("/transactions")
+    /*список транзакций*/
+/*    @GetMapping("/transactions")
     public String findAlltransactions(Model model){
         List<Transaction> transactions = transactionRepository.findAll();
         model.addAttribute("transactions", transactions);
         return "transactionList";
-    }
-
+    }*/
+    /*фильтр клиентов*/
 /*    @PostMapping("filter")
     public String filter(@RequestParam Date filter, Model model) {
         if (filter != null && filter.isEmpty()) {
@@ -63,7 +63,7 @@ private final TransactionRepository transactionRepository;
         }
     }*/
 
-
+    /*добавление клиента*/
     @PostMapping("/clients")
     public String add(@RequestParam String name,@RequestParam String address,@RequestParam Integer age, Model model){
         Client client = clientRepository.findClientByName(name);
@@ -77,7 +77,7 @@ private final TransactionRepository transactionRepository;
         model.addAttribute("clients", clients);
         return "clientsList";
     }
-
+    /*список клиентов*/
     @GetMapping("/accounts/{name}")
     public String accountsByName(@PathVariable("name") String name, Model model){
         Client client = clientRepository.findClientByName(name);
@@ -85,7 +85,7 @@ private final TransactionRepository transactionRepository;
         model.addAttribute("accountsList", accountsById);
         return "accountsByName";
     }
-
+    /*список аккаунтов по имени (использование join)*/
     @PostMapping("/accounts/{name}")
     public String addNewAccount(@RequestParam Integer money,@PathVariable("name") String name, Model model){
         Integer client_id = clientRepository.findClientByName(name).getId();
@@ -96,7 +96,7 @@ private final TransactionRepository transactionRepository;
         model.addAttribute("accountsList", accountsById);
         return "accountsByName";
     }
-
+    /*удаление клиента*/
     @GetMapping("/client-delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id){
         clientRepository.deleteById(id);
