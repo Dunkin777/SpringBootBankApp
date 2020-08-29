@@ -1,11 +1,7 @@
 package bankapp.SpringBootBankApp.Repository;
 
-import bankapp.SpringBootBankApp.Model.Client;
-import bankapp.SpringBootBankApp.Model.Transactions;
+import bankapp.SpringBootBankApp.Model.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TransactionRepository extends JpaRepository<Transactions, Integer> {
-
-
-
+public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 }

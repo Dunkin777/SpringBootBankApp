@@ -21,7 +21,7 @@ public class Account {
     @JoinColumn(name = "client_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Client clientByClientId;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountByAccountFrom")
-    private List<Transactions> transactionsById;
+    private List<Transaction> transactionById;
 
     public Integer getMoney() {
         return money;

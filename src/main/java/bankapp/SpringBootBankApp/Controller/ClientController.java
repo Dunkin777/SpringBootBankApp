@@ -2,12 +2,10 @@ package bankapp.SpringBootBankApp.Controller;
 
 import bankapp.SpringBootBankApp.Model.Account;
 import bankapp.SpringBootBankApp.Model.Client;
-import bankapp.SpringBootBankApp.Model.Transactions;
+import bankapp.SpringBootBankApp.Model.Transaction;
 import bankapp.SpringBootBankApp.Repository.AccountRepository;
 import bankapp.SpringBootBankApp.Repository.ClientRepository;
 import bankapp.SpringBootBankApp.Repository.TransactionRepository;
-import bankapp.SpringBootBankApp.Service.AccountService;
-import bankapp.SpringBootBankApp.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ClientController {
@@ -53,10 +51,17 @@ private final TransactionRepository transactionRepository;
 
     @GetMapping("/transactions")
     public String findAlltransactions(Model model){
-        List<Transactions> transactions = transactionRepository.findAll();
+        List<Transaction> transactions = transactionRepository.findAll();
         model.addAttribute("transactions", transactions);
         return "transactionList";
     }
+
+/*    @PostMapping("filter")
+    public String filter(@RequestParam Date filter, Model model) {
+        if (filter != null && filter.isEmpty()) {
+
+        }
+    }*/
 
 
     @PostMapping("/clients")
@@ -90,6 +95,12 @@ private final TransactionRepository transactionRepository;
         List<Account> accountsById = client.getAccountsById();
         model.addAttribute("accountsList", accountsById);
         return "accountsByName";
+    }
+
+    @GetMapping("/client-delete/{id}")
+    public String deleteUser(@PathVariable("id") Integer id){
+        clientRepository.deleteById(id);
+        return "redirect:/clients";
     }
 
 }
