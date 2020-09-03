@@ -21,8 +21,9 @@
 </head>
 <body>
 <h1>All transaction in bank</h1>
-<!--<form method="post" action="filter">
-    <input type="date" action="filter">
+<form method="post" action="filter">
+    <label for="date">Date of filter</label>
+    <input type="date" id="date" name="filter"> <!--достаёт данные по name-->
     <br>
     <input type="radio" id="before" name="dateType" value="before">
     <label for="before">before</label>
@@ -31,7 +32,7 @@
     <label for="after">after</label>
     <br>
     <button type="submit">Filter</button>
-</form>-->
+</form>
 <!--вывод таблицы-->
 <div th:switch="${transactions}">
     <h2 th:case="null">No transaction found!</h2>

@@ -15,8 +15,9 @@ import java.util.Collections;
 
 @Controller
 public class RegistrationController {
-    @Autowired
-    private UserRepository userRepository;
+    @Autowired //анотация для подявязывания от уже описанного класса
+    private UserRepository userRepository; //DI - создаём нужный объект из контейнера (IoC)
+    //Spring - реализует IoC контейнер, создаёт полный цикл создания объекта, который подвязывается анотацией
 
     @GetMapping("/registration")
     public String registration(){
@@ -25,7 +26,7 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(@RequestParam String username, @RequestParam String password, Model model){
-        User userFromDb = userRepository.findByUsername(username);
+        User userFromDb = userRepository.findByUsername(username); //находим по имени
         if (userFromDb !=null) {
             model.addAttribute("text", "Username is:" + username);
         return "registration";

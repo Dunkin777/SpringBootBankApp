@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,22 @@ public class AccountController {
     @GetMapping("/transaction")
     public String findAlltransactions(Model model){
         List<Transaction> transactions = transactionRepository.findAll();
+        model.addAttribute("transactions", transactions);
+        return "transactionList";
+    }
+
+    /*фильтр транзакций по дате(не работает, выдаёт ошибку 403)*/
+    @PostMapping("filter")
+    public String filter(@RequestParam Date filter, @RequestParam String dateType, Model model) {
+       Iterable<Transaction> transactions = transactionRepository.findAll();;
+        if (filter != null) {
+            switch (dateType){
+                case "before": transactions = transactionRepository.findByDateBefore(filter);
+                    break;
+                case "after": transactions = transactionRepository.findByDateAfter(filter);
+                    break;
+            }
+        }
         model.addAttribute("transactions", transactions);
         return "transactionList";
     }

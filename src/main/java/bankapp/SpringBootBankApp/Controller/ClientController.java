@@ -22,7 +22,7 @@ import java.util.List;
 public class ClientController {
 
     //private final ClientService clientService;
-private final ClientRepository clientRepository;
+private final ClientRepository clientRepository;//DI - создаём нужный объект из контейнера (IoC)
 private final AccountRepository accountRepository;
 private final TransactionRepository transactionRepository;
 
@@ -48,20 +48,6 @@ private final TransactionRepository transactionRepository;
         model.addAttribute("clients", clients);
         return "clientsList";
     }
-    /*список транзакций*/
-/*    @GetMapping("/transactions")
-    public String findAlltransactions(Model model){
-        List<Transaction> transactions = transactionRepository.findAll();
-        model.addAttribute("transactions", transactions);
-        return "transactionList";
-    }*/
-    /*фильтр клиентов*/
-/*    @PostMapping("filter")
-    public String filter(@RequestParam Date filter, Model model) {
-        if (filter != null && filter.isEmpty()) {
-
-        }
-    }*/
 
     /*добавление клиента*/
     @PostMapping("/clients")
